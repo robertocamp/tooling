@@ -141,36 +141,7 @@ By following these guidelines, you can establish a flexible and efficient Go dev
 
 
 
-### environment variables
-- **GOPATH**: This is one of the most important environment variables in Go. It specifies the root of your workspace where your Go code, binaries, and packages are stored. By default, it is set to `$HOME/go`.
 
-- **GOROOT**: This variable points to the directory where your Go SDK is installed. Usually, this is set automatically when you install Go.
-
-- **GOBIN**: This variable specifies where Go should place binaries when you install packages using `go install`. By default, it is `$GOPATH/bin`.
-
-
-- **local setup**
-    1. `cd` (cd to your home directory)
-    2. `mkdir go`
-    3. `mkdir -p go/src`
-    4. `mkdir -p go/bin`
-    5. `mkdir -p go/pkg`
-`
-You can add these environment variables to your `.zshrc` or `.bash_profile`:
-
-```bash
-export GOPATH=$HOME/go
-export GOROOT=$(brew --prefix go)/libexec
-export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-```
-
-### Activating the Environment
-
-After adding the above lines to your `.zshrc` or `.bash_profile`, make sure to reload your shell configuration:
-
-```bash
-source ~/.zshrc  # or source ~/.bash_profile
-```
 
 ## 3. Writing and Running a "Hello World" Program
 
@@ -248,6 +219,80 @@ One of the powerful aspects of Go is its ability to compile code into a single b
 ## Summary
 
 This guide provides a comprehensive overview of setting up a Go development environment on a Mac. By properly configuring your environment variables and understanding how to compile and run Go programs, you can leverage the full power of Go to build efficient and scalable applications. Whether you're running scripts directly or building binaries that can be used as commands, Go's simplicity and performance make it a strong choice for a wide range of applications.
+
+
+## go_setup.sh script
+
+
+
+
+Here's a shell script named `go_setup.sh` that performs the steps you've described. This script assumes that Go has already been installed using Homebrew, and it sets up the Go workspace in the user's home directory. It also checks the user's current shell and updates the `.zshrc` file if the shell is `/bin/zsh`.
+
+```bash
+#!/bin/bash
+
+# Display a message with the user's name
+echo "Validating Go environment for $USER..."
+
+# Change to the user's home directory
+cd $HOME
+
+# Display the home directory
+echo "Home directory: $HOME"
+
+# Create the Go workspace directory structure
+echo "Creating Go workspace..."
+mkdir -p $HOME/go/{bin,pkg,src}
+
+# Detect the user's current shell
+CURRENT_SHELL=$(echo $SHELL)
+
+# Display the detected shell
+echo "Detected shell: $CURRENT_SHELL"
+
+# Check if the shell is /bin/zsh
+if [ "$CURRENT_SHELL" = "/bin/zsh" ]; then
+  # Update the .zshrc file
+  echo "Updating .zshrc with Go environment variables..."
+  echo "export GOPATH=$HOME/go" >> $HOME/.zshrc
+  echo "export PATH=\$PATH:/usr/local/go/bin:\$GOPATH/bin" >> $HOME/.zshrc
+  echo "Go environment setup complete. Please restart your terminal or run 'source ~/.zshrc' to apply the changes."
+else
+  # Display a message if the shell is not supported
+  echo "Unsupported shell detected: $CURRENT_SHELL"
+  echo "Please switch to the zsh shell to use this setup script."
+fi
+```
+
+### How to Use the Script:
+
+1. **Save the Script**: Save the script to a file named `go_setup.sh`.
+   
+2. **Make the Script Executable**:
+   ```bash
+   chmod +x go_setup.sh
+   ```
+
+3. **Run the Script**:
+   ```bash
+   ./go_setup.sh
+   ```
+
+### Script Explanation:
+
+- **User Validation**: The script begins by displaying a message that includes the current user's name using the `$USER` environment variable.
+  
+- **Home Directory Navigation**: It navigates to the user's home directory and displays the path using `$HOME`.
+
+- **Workspace Creation**: The script creates a Go workspace directory structure (`bin`, `pkg`, `src`) within the user's home directory.
+
+- **Shell Detection**: It detects the current shell using `$SHELL` and checks if it is `/bin/zsh`.
+
+- **Shell Support Check**: If the detected shell is `/bin/zsh`, the script updates the `.zshrc` file to include the necessary Go environment variables (`GOPATH` and `PATH`). If the shell is not `/bin/zsh`, the script informs the user that the shell is unsupported and suggests switching to zsh.
+
+This script provides a streamlined way for new Go developers to set up their environment, ensuring they have the proper workspace and environment variables configured.
+
+
 
 ## links
 

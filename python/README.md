@@ -76,6 +76,35 @@ A Python virtual environment is a self-contained directory that contains a Pytho
 
 4. **hello world code**
 
+
+    1. **Set Up the Python Virtual Environment**:
+    Follow the steps outlined above to create and activate a virtual environment.
+
+    2. **Create a Simple Python Script**:
+    Create a new Python file named `hello.py`:
+
+    ```bash
+    touch hello.py
+    ```
+
+    Add the following code to the `hello.py` file:
+
+    ```python
+    print("Hello, World!")
+    ```
+
+    3. **Run the Python Script**:
+    With your virtual environment activated, run the script using:
+
+    ```bash
+    python hello.py
+    ```
+
+    You should see the output:
+    ```
+    Hello, World!
+    ```
+
 4. **Deactivate the Virtual Environment**:
    To deactivate and exit the virtual environment, simply run:
    ```bash
@@ -106,35 +135,6 @@ A Python virtual environment is a self-contained directory that contains a Pytho
   - Requires more setup for data science workflows compared to Jupyter.
   - Less interactive for data exploration compared to Jupyter Notebook.
 
-## 5. Setting Up a Python Virtual Environment and Writing a "Hello World" Program
-
-1. **Set Up the Python Virtual Environment**:
-   Follow the steps outlined above to create and activate a virtual environment.
-
-2. **Create a Simple Python Script**:
-   Create a new Python file named `hello.py`:
-
-   ```bash
-   touch hello.py
-   ```
-
-   Add the following code to the `hello.py` file:
-
-   ```python
-   print("Hello, World!")
-   ```
-
-3. **Run the Python Script**:
-   With your virtual environment activated, run the script using:
-
-   ```bash
-   python hello.py
-   ```
-
-   You should see the output:
-   ```
-   Hello, World!
-   ```
 
 ## Summary
 

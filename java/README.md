@@ -36,6 +36,8 @@ Homebrew is a package manager for macOS that makes it easy to install software.
 
    TO DO THIS IN VSCODE:    `code ~/.zshrc` , then add the "export" line from above
 
+   THEN:  `source ~/.zshrc`
+
 ### Manual Installation (Alternative)
 
 1. **Download the JDK**: Visit the [Oracle JDK download page](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html) or the [AdoptOpenJDK page](https://adoptopenjdk.net/) and download the installer for the latest version of Java.
@@ -85,7 +87,7 @@ Different projects may require different versions of Java. Here’s how to manag
 Java does not require a virtual environment like Python, but you can manage different versions using tools like `jenv`. This is particularly useful when working on multiple projects that require different Java versions.
 
 
-## 4. VScode extension for Java
+## 5. VScode extension for Java
 
 Best VS Code Extension for Java on Mac
 The Extension Pack for Java is the generally recommended choice for developing Java applications in Visual Studio Code on a Mac. This pack includes a collection of essential extensions that provide a robust development environment:
@@ -103,7 +105,7 @@ To install the Extension Pack for Java, open VS Code, go to the Extensions view 
 
 
 
-## 5. Creating a Basic "Hello World" Program
+## 6. Creating a Basic "Hello World" Program
 
 Once Java is installed, you can create and run a simple Java program:
 
