@@ -98,7 +98,3 @@ Once Dart is installed, you can create and run a simple Dart program:
 ## Summary
 
 In this guide, we've provided an overview of Dart, its history, use cases, and how to set up a Dart development environment on a Mac. Dart is a powerful and versatile language, especially when used with Flutter for mobile and cross-platform development.
-
----
-
-This should give a good starting point for developers unfamiliar with Dart, offering them both context and practical steps for getting started with the language.

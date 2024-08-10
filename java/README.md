@@ -1,7 +1,3 @@
-Here’s a draft for your `java/README.md` file:
-
----
-
 # Setting Up a Java Development Environment on Mac
 
 This guide will walk you through the steps to set up a basic, functional Java environment on your Mac. Java is a versatile and widely-used programming language, and setting up your environment correctly is the first step toward productive development.
@@ -152,29 +148,3 @@ Once Java is installed, you can create and run a simple Java program:
 
 You’ve now set up a Java development environment on your Mac, learned how to manage different Java versions, and created a simple "Hello World" program. This setup will allow you to start developing Java applications or learning the language.
 
----
-
-Feel free to modify this draft to suit your specific needs!
-
-after doing the `brew install openjdk` and the `export PATH="/usr/local/opt/openjdk/bin:$PATH"`,
-
-
-I get this:
-
-
-```
-
-◉ which java                                                                                            ▦ go/src 
-/usr/bin/java
-
-◉ java -version                                                                                         ▦ go/src 
-The operation couldn’t be completed. Unable to locate a Java Runtime.
-Please visit http://www.java.com for information on installing Java.
-
-
-⊘ which java                                                                                            ▦ go/src 
-/usr/bin/java
-
-◉ echo $PATH                                                                                            ▦ go/src aws ▲   us-east-2 13:35
-/usr/local/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/go/bin:/Users/robertc/go/bin:/usr/local/go/bin:/Users/robertc/go/bin
-```

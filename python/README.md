@@ -139,7 +139,3 @@ A Python virtual environment is a self-contained directory that contains a Pytho
 ## Summary
 
 This guide provides a solid foundation for setting up a Python development environment on a Mac. From verifying your Python installation to managing packages and virtual environments, these steps will prepare you for productive Python development. Whether you choose to work in Jupyter Notebook or VSCode, you'll be well-equipped to start coding in Python.
-
----
-
-This README should provide a clear and practical guide for setting up Python on your Mac, with explanations and steps that cater to both beginners and more experienced developers. Let me know if you'd like any adjustments!
