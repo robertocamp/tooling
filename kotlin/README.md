@@ -70,8 +70,8 @@ Once Kotlin is installed, you can create and run a simple Kotlin program:
 
 1. **Create a Directory for Your Project**:
    ```bash
-   mkdir hello_kotlin
-   cd hello_kotlin
+   mkdir tooling/kotlin/Hello
+   cd Hello
    ```
 
 2. **Create a Kotlin File**:
@@ -121,16 +121,3 @@ In this guide, we've provided an overview of Kotlin, its history, use cases, and
 ---
 
 This should provide a comprehensive introduction to Kotlin, helping developers unfamiliar with the language get started with both the background context and the practical setup steps.
-
-
-
-I seem to be getting some inconsistent results with the kotlin hello world program:
-
-kotlinc HelloWorld.kt -include-runtime -d HelloWorld.jar
-java -jar HelloWorld.jar
-
-Hello, World!
-
-
-kotlin HelloWorld.kt                                  ▦ kotlin/Hello ◬ main⎪●◦◌◦⎥ java ∪ v22.0.2 via 🅺 v2.0.10  
-error: could not find or load main class HelloWorld.kt
