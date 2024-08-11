@@ -132,7 +132,7 @@ sheets_of_interest = [
 < insert list of sheet names>
 ]
 
-# Load the specific sheets
+#  the specific sheets
 dfs = pd.read_excel("final.xlsx", sheet_name=sheets_of_interest, engine='openpyxl')
 
 # Loop through each sheet and extract the "Departments" column
@@ -165,23 +165,23 @@ for sheet_name, df in dfs.items():
 ### Sample Output:
 
 ```
-Anna Dilger: Departments
+name: Departments
 Department 1
 Department 2
 Department 3
 
-Marni Boppart: Departments
+name: Departments
 Department A
 Department B
 
-Clara Chen: Departments
+name: Departments
 Department X
 Department Y
 Department Z
 
 ...
 
-Jinming Zhang: Departments
+name: Departments
 Department M
 Department N
 ```
