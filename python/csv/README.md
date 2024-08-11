@@ -1,5 +1,10 @@
 # Python Excel and CSV 
 
+## Python virtual environments
+
+- create python virtual environment using [theese procuedures](../README.md)
+
+
 ## MS excel files
 
 Yes, it is possible to install Microsoft Excel on a MacBook Pro with an M2 chip. Microsoft offers a version of Office 365, which includes Excel, that is compatible with Apple Silicon (M1, M2, etc.) processors. The software runs natively on these chips, ensuring optimal performance.
