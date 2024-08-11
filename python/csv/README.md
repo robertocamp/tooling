@@ -53,3 +53,32 @@ Anna Dilger: Departments
 
 Can we do that?
 
+
+
+Thank you, listing the Departments 
+
+
+
+Instead of printing the output to the screen, could we instead create  a local CVS that has a sheet for each name of interest, and each sheet has two column headings, "Department" and "Updated Department"?
+
+The "Department" column should include the existing Department information from the current iteration of the code.
+
+The "Updated Department" column is a placeholder for making updates to the Department name.
+
+Does CSV support mulit-sheet file?
+
+If it doesn't, would we have to create an .xlsx file?
+
+
+I have updated the departments_update.xlsx file to contain the updated Department name in the "Updated Department" column, for each line item in the "Department" column of each sheet in that file.
+
+The final procedure is to open both the "final.xlsx" and the "departments_update.xlsx" files and create a new file:
+
+final_updated.xlsx
+
+which contains:
+
+The updated name for each line item the "Departments" column of each sheet of interest. This update comes from the "Updated Department" column of the "departments_update.xlsx" file.
+
+Does this make sense?
+

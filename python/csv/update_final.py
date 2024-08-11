@@ -2,15 +2,7 @@ import pandas as pd
 
 # List of sheets to load and update
 sheets_of_interest = [
-    "Anna Dilger",
-    "Marni Boppart",
-    "Clara Chen",
-    "Erhan Kudeki",
-    "Charlotte Mattax-Moersch",
-    "James Slauch",
-    "Mike Yao",
-    "Min Zhan",
-    "Jinming Zhang"  # Now without the trailing space
+
 ]
 
 # Load the original and update Excel files
