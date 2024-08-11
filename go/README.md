@@ -191,31 +191,21 @@ By following these guidelines, you can establish a flexible and efficient Go dev
 
 One of the powerful aspects of Go is its ability to compile code into a single binary that can be run as a command.
 
-1. **Build the Binary**:
+
+These commands compile your Go program and creates a binary named `hello` in the current directory, then moves the binary into your $GOPATH so that you can run it as a system command
+
+
+1. **Build and Run the Binary**:
    ```bash
+ 
+   go mod init tooling
+   go mod tidy
    go build -o hello
-   ```
-
-   This command compiles your Go program and creates a binary named `hello` in the current directory.
-
-### Using the Binary
-
-2. **Move the Binary to Your $GOBIN Directory**:
-   ```bash
-   mv hello $GOPATH/bin/
-   ```
-
-3. **Run the Binary as a Command**:
-   Now that the binary is in your `$GOBIN` directory, you can run it from anywhere in your terminal by simply typing:
-   ```bash
+   mv hello $GOPATH/bin/\n
    hello
    ```
 
-   This will execute the `hello` binary, and you should see:
-   ```
-   Hello, World!
-   ```
-
+   
 ## Summary
 
 This guide provides a comprehensive overview of setting up a Go development environment on a Mac. By properly configuring your environment variables and understanding how to compile and run Go programs, you can leverage the full power of Go to build efficient and scalable applications. Whether you're running scripts directly or building binaries that can be used as commands, Go's simplicity and performance make it a strong choice for a wide range of applications.
@@ -297,3 +287,17 @@ This script provides a streamlined way for new Go developers to set up their env
 ## links
 
 - https://www.digitalocean.com/community/tutorials/how-to-install-go-and-set-up-a-local-programming-environment-on-macos
+
+
+OK, in working thru the Go examples in the README, I came across this behavior:
+
+pwd                                                                  ▦ go/Hello ◬ update-readmes⎪◌◦⎥ go ∩ v1.22.5  aws ▲   us-east-2 16:39
+/Users/robertc/go/src/github/tooling/go/Hello
+
+ ls                                                                 ▦ go/Hello ◬ update-readmes⎪●◦◌◦⎥ go ∩ v1.22.5  aws ▲   us-east-2 16:40
+hello.go
+
+go build -o hello                                                  ▦ go/Hello ◬ update-readmes⎪●◦◌◦⎥ go ∩ v1.22.5  aws ▲   us-east-2 16:40
+go: cannot find main module, but found .git/config in /Users/robertc/go/src/github/tooling
+        to create a module there, run:
+        cd ../.. && go mod init
