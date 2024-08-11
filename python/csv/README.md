@@ -1,84 +1,70 @@
-Anna Dilger
-Marni Boppart
-Clara Chen
-Erhan Kudeki
-Charlotte Mattax-Moersch
-James Slauch
-Mike Yao
-Min Zhan
-Jinming Zhang
+# Python Excel and CSV 
+
+## MS excel files
+
+Yes, it is possible to install Microsoft Excel on a MacBook Pro with an M2 chip. Microsoft offers a version of Office 365, which includes Excel, that is compatible with Apple Silicon (M1, M2, etc.) processors. The software runs natively on these chips, ensuring optimal performance.
+
+To install Excel on your MacBook Pro M2, you can do the following:
+
+1. **Via Microsoft 365 Subscription:**
+   - Purchase a Microsoft 365 subscription, which includes Excel.
+   - Go to [Microsoft 365](https://www.microsoft.com/microsoft-365) and log in with your account.
+   - Download the Office installer package and follow the on-screen instructions to install Excel along with other Office apps.
+
+2. **Via Mac App Store:**
+   - Open the Mac App Store on your MacBook Pro.
+   - Search for "Microsoft Excel" and click "Get" to download and install the app. Note that this may prompt you to sign in with a Microsoft account and potentially purchase a subscription.
+
+3. **One-time Purchase:**
+   - You can also purchase a one-time license for Microsoft Office (Office Home & Student or Office Home & Business) from Microsoft or authorized retailers, which allows you to install Excel and other Office apps.
+
+Once installed, Excel will run efficiently on your M2 MacBook Pro.
+
+## Basic Python for CSV/EXCEL
 
 
-I want open an .xlsx file in Python, for some data analysis.   Do I need to conver the file to csv first or can Python open the native .xlsx file?
+You don't need to convert the `.xlsx` file to a CSV format; Python can open and work with `.xlsx` files directly using libraries like `pandas` and `openpyxl`. Here's how you can do it:
 
-The file is called "final.xlsx"
+### 1. Install the Necessary Libraries
 
+If you haven't already installed `pandas` and `openpyxl`, you can install them using pip:
 
-OK, I can open the spreadsheet in Python.
-
-This is multi-sheet exel file, with multiple tabs at the bottom each representing a unique spreadsheet.
-
-Will Python be able to analyse a subset of the multi-sheet file?
-
-
-The sheet names  of interest are:
-
-
-"Anna Dilger"
-"Marni Boppart"
-"Clara Chen"
-"Erhan Kudeki"
-"Charlotte Mattax-Moersch"
-"James Slauch"
-"Mike Yao"
-"Min Zhan"
-"Jinming Zhang"
-
-
-
-That looks excellent. My main task is that, for each of the named sheets, I want to analyse the data in the "Departments" column heading, and really only needing to list the line items under that heading.
-
-So for example, I would like the output to be:
-
-```
-Anna Dilger: Departments
-
-<list the line items under Departments heading>
-<space>
-...proceed to next sheet of interest...
-<SHEET NAME>: Departments
+```bash
+pip install pandas openpyxl
 ```
 
+### 2. Open and Read the `.xlsx` File
 
+You can use `pandas` to read the `.xlsx` file directly:
 
-Can we do that?
+```python
+import pandas as pd
 
+# Load the Excel file
+df = pd.read_excel("final.xlsx", engine='openpyxl')
 
+# Display the first few rows of the dataframe
+print(df.head())
+```
 
-Thank you, listing the Departments 
+### Explanation:
 
+- **`pd.read_excel("final.xlsx", engine='openpyxl')`**: This command reads the `.xlsx` file into a `pandas` DataFrame, which you can then manipulate for data analysis.
+- **`engine='openpyxl'`**: The `engine` parameter specifies the engine to use for reading the Excel file. `openpyxl` is commonly used for `.xlsx` files.
 
+### 3. Perform Data Analysis
 
-Instead of printing the output to the screen, could we instead create  a local CVS that has a sheet for each name of interest, and each sheet has two column headings, "Department" and "Updated Department"?
+Once the file is loaded into a DataFrame, you can perform various data analysis tasks using `pandas` like filtering, aggregation, visualization, etc.
 
-The "Department" column should include the existing Department information from the current iteration of the code.
+### Example of a Simple Data Analysis
 
-The "Updated Department" column is a placeholder for making updates to the Department name.
+```python
+# Get basic statistics
+print(df.describe())
 
-Does CSV support mulit-sheet file?
+# Group by a column and get the mean
+grouped_data = df.groupby('some_column').mean()
+print(grouped_data)
+```
 
-If it doesn't, would we have to create an .xlsx file?
-
-
-I have updated the departments_update.xlsx file to contain the updated Department name in the "Updated Department" column, for each line item in the "Department" column of each sheet in that file.
-
-The final procedure is to open both the "final.xlsx" and the "departments_update.xlsx" files and create a new file:
-
-final_updated.xlsx
-
-which contains:
-
-The updated name for each line item the "Departments" column of each sheet of interest. This update comes from the "Updated Department" column of the "departments_update.xlsx" file.
-
-Does this make sense?
-
+This approach allows you to work with the Excel file directly in its native format without needing to convert it to CSV.
