@@ -4,6 +4,10 @@ This guide will walk you through the steps to set up a basic, functional Java en
 
 ## 1. How to Install Java
 
+###   do I already have Java ?
+
+- `java -version`  --if this fails, you need to install java per instructions below
+
 ### Using Homebrew (Recommended)
 
 Homebrew is a package manager for macOS that makes it easy to install software.
