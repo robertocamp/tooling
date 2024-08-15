@@ -13,6 +13,55 @@ Homebrew is a package manager for macOS that will help you install `Oh My Zsh` d
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+## Oh My Zsh
+
+To verify whether "Oh My Zsh" is already installed on your Mac, you can follow these steps:
+
+### 1. **Check the Zsh Configuration File**
+
+Open your Terminal and check if the `~/.zshrc` file contains the line that loads "Oh My Zsh." You can do this by running:
+
+```bash
+cat ~/.zshrc | grep "oh-my-zsh.sh"
+```
+
+If "Oh My Zsh" is installed, you should see something like:
+
+```bash
+source $ZSH/oh-my-zsh.sh
+```
+
+This line indicates that the `oh-my-zsh.sh` script is being sourced when you start a new terminal session, which is a key part of "Oh My Zsh."
+
+### 2. **Check for the Oh My Zsh Directory**
+
+Another way to check is by seeing if the "Oh My Zsh" directory exists in your home directory:
+
+```bash
+ls -la ~/.oh-my-zsh
+```
+
+If "Oh My Zsh" is installed, this command will list the contents of the `.oh-my-zsh` directory. If the directory exists, "Oh My Zsh" is installed on your system.
+
+### 3. **Check the Terminal Prompt**
+
+If your terminal prompt looks more colorful or customized (for example, showing the current git branch when inside a git repository), it's likely that "Oh My Zsh" is installed. By default, "Oh My Zsh" comes with the "robbyrussell" theme, which displays a `➜` character at the prompt.
+
+### 4. **Check the Zsh Version and Themes**
+
+Run the following command to see if the `ZSH_THEME` variable is set, which is typically configured by "Oh My Zsh":
+
+```bash
+echo $ZSH_THEME
+```
+
+If it returns a theme name (e.g., `robbyrussell`), it indicates that "Oh My Zsh" is managing your shell environment.
+
+If any of these checks indicate the presence of "Oh My Zsh," then it is already installed on your Mac. If not, you can follow the steps to install it as described in the previous response.
+
+## INSTALL OH MY ZSH IF NOT INSTALLED
+
+
 ### 2. **Install Zsh (if not already installed)**
 
 Zsh is pre-installed on macOS, but if you want to make sure you're using the latest version, you can install it via Homebrew:
