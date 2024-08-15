@@ -46,6 +46,9 @@ The easiest way to install Go on macOS is through Homebrew:
    ```
    This command will display the installed version of Go.
 
+4. upgrade go:  `brew upgrade go`
+
+
 ### Golang Workspaces
 
 
