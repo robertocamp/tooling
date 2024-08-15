@@ -28,6 +28,9 @@ Kotlin is a versatile language with several key use cases:
 
 ### Installing Kotlin on macOS
 
+**NOTE:** kotlin requires a functioning JRE on your machine
+   - if this command is not working:  `java -version` , you will not get Kotlin running
+   
 Kotlin can be installed in multiple ways, but the most straightforward method is using the Kotlin compiler directly or through an IDE like IntelliJ IDEA.
 
 #### Option 1: Using Homebrew
