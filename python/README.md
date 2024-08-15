@@ -46,6 +46,11 @@ After running this command, you can verify the installation by checking the `pip
 pip3 --version
 ```
 
+### updating pip
+
+pip install --upgrade pip 
+
+
 ## 3. Python Virtual Environment
 
 ### What Role Does a Python Virtual Environment Play in a Local Development Environment?
@@ -134,6 +139,7 @@ A Python virtual environment is a self-contained directory that contains a Pytho
 - **Cons**:
   - Requires more setup for data science workflows compared to Jupyter.
   - Less interactive for data exploration compared to Jupyter Notebook.
+
 
 
 ## Summary
