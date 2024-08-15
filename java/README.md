@@ -150,3 +150,8 @@ Once Java is installed, you can create and run a simple Java program:
 
 You’ve now set up a Java development environment on your Mac, learned how to manage different Java versions, and created a simple "Hello World" program. This setup will allow you to start developing Java applications or learning the language.
 
+
+## links
+
+- 
+- message from Prime:  https://www.youtube.com/shorts/ZFi-LTpUGHA
