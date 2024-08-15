@@ -80,3 +80,6 @@ Hi username! You've successfully authenticated, but GitHub does not provide shel
 ```
 
 If you see this message, you’ve successfully added your SSH key to your Mac M1 and connected it to GitHub.
+
+
+**TO CLONE A REPO**  `git clone <github clone link>`
