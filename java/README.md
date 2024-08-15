@@ -57,7 +57,7 @@ Homebrew is a package manager for macOS that makes it easy to install software.
 ## 2.  validation 
 
 - `which java`
-- `java version`
+- `java -version`
 
 
 ## 3. How to Choose Which Version of Java to Install or Use
