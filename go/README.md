@@ -82,6 +82,14 @@ Today, **Go modules** are the preferred way to manage dependencies and organize 
 **Would you like to learn more about Go modules or how to migrate from GOPATH to Go modules?**
 
 
+### environment vars
+
+- Golang local env
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+
 ## Using Go Modules for Local Development and Binaries
 
 ### Understanding the Role of `$GOPATH/bin`
