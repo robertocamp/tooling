@@ -103,17 +103,7 @@ Once Kotlin is installed, you can create and run a simple Kotlin program:
    Hello, Kotlin!
    ```
 
-5. **Running the Kotlin Script Directly**:
-   If you prefer to run the script directly without compiling it to a JAR file, you can use the following command:
 
-   ```bash
-   kotlin -script HelloWorld.kt
-   ```
-
-   This command will execute the script and should also produce the output:
-   ```
-   Hello, Kotlin!
-   ```
 
 ---
 
