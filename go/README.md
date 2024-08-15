@@ -86,9 +86,10 @@ Today, **Go modules** are the preferred way to manage dependencies and organize 
 
 - Golang local env
 
+```
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
+```
 
 ## Using Go Modules for Local Development and Binaries
 
