@@ -2,6 +2,50 @@
 
 set up Anaconda on your Mac M1 without disrupting your current Python environment by following these steps:
 
+
+## Conda Virtual Environments
+
+When you create a Conda environment, it can include its own installation of Python, which is isolated from other environments and the system-wide Python installation. This is one of the key features of Conda, allowing you to have multiple environments with different versions of Python and different sets of packages, all without interfering with each other.
+
+### How Conda Environments Work with Python:
+1. **Isolated Python Installation:**
+   - Each Conda environment can have its own version of Python installed. When you specify a Python version during the creation of a Conda environment, Conda installs that specific version of Python into the environment.
+
+2. **Environment-Specific Packages:**
+   - The packages installed in a Conda environment are also isolated to that environment. This means that you can have different versions of the same package in different environments without any conflicts.
+
+3. **Environment Activation:**
+   - When you activate a Conda environment, the `python` command (and any other installed packages) will refer to the versions installed within that environment. This ensures that your scripts run with the correct interpreter and dependencies.
+
+4. **No Interference with System Python:**
+   - The Python installation in a Conda environment does not affect your system-wide Python or other environments. This is particularly useful for working on projects that require different Python versions or dependencies.
+
+### Example Workflow:
+1. **Create a Conda Environment with a Specific Python Version:**
+   ```bash
+   conda create --name myenv python=3.12
+   ```
+
+2. **Activate the Environment:**
+   ```bash
+   conda activate myenv
+   ```
+
+3. **Install Packages and Develop:**
+   ```bash
+   conda install numpy
+   python hello_conda.py
+   ```
+
+4. **Deactivate the Environment:**
+   ```bash
+   conda deactivate
+   ```
+
+This setup allows you to work on multiple projects with different requirements on the same machine without running into version conflicts.
+
+
+
 ## Anaconda:  do I already have it???
 
  quickly check if Anaconda is already installed on your machine by following these steps:
@@ -15,6 +59,25 @@ set up Anaconda on your Mac M1 without disrupting your current Python environmen
    ```bash
    which conda
    ```
+
+
+The output you are seeing from the `which conda` command indicates that `conda` is not a simple executable or a binary file on your system but rather a shell function. 
+
+When you type `which conda`, the shell is telling you that `conda` is defined as a function in your shell environment. This function is responsible for handling the various operations of `conda` (like `activate`, `deactivate`, `install`, etc.) and likely includes logic to manage these operations properly within your shell session.
+
+Here's a breakdown of what you're seeing:
+
+- **conda () { ... }**: This indicates that `conda` is a shell function.
+- **local cmd="${1-__missing__}"**: This line sets the `cmd` variable to the first argument passed to the `conda` function, or to `__missing__` if no argument is provided.
+- **case "$cmd" in ... esac**: This `case` statement is used to decide what the function should do based on the value of `cmd`. Different cases correspond to different `conda` commands:
+  - **(activate | deactivate)**: If the `cmd` is `activate` or `deactivate`, it calls `__conda_activate` with all the provided arguments.
+  - **(install | update | upgrade | remove | uninstall)**: If the `cmd` is one of these package management operations, it first calls `__conda_exe`, and if that command fails, it attempts to "reactivate" the current environment by calling `__conda_reactivate`.
+  - **(*)**: For any other command, it just calls `__conda_exe` with all the provided arguments.
+
+The reason this is more complex than what you would normally see is that `conda` uses functions like this to integrate more deeply with your shell environment, allowing it to manage environment variables and paths more effectively. This is necessary for managing virtual environments, modifying the `$PATH`, and other shell-related tasks that `conda` needs to perform.
+
+In contrast, most commands you run via `which` are simple executables or scripts located somewhere in your `$PATH`, which is why `which` typically returns just the file path to the command.
+
 
    ```bash
    conda --version
@@ -53,7 +116,9 @@ These steps will help you determine whether Anaconda is already installed on you
 
    `echo $PATH | grep -i anaconda`
 
-#### Anaconda directories after installation:  ~/.conda and ~/.anaconda
+#### Anaconda directories after installation: 
+
+   - there will be two directories in your $HOME:   ~/.conda and ~/.anaconda
 
 Yes, the Anaconda installation typically creates two hidden directories in your home directory: `~/.conda` and `~/.anaconda`. Here’s a brief description of their purposes:
 
@@ -70,9 +135,13 @@ Yes, the Anaconda installation typically creates two hidden directories in your 
      - **Navigator Configurations:** User-specific configuration files for the Anaconda Navigator, which is the graphical interface for managing environments, packages, and more.
      - **Backup Files:** It may also include backup files or other user-specific data related to Anaconda's GUI tools.
 
+   - there will an additional directory in /opt:   `/opt/anaconda3`
+
 ### Summary
 - **`~/.conda`:** Primarily for storing Conda-related data like environments and configurations.
 - **`~/.anaconda`:** Used for storing preferences and settings specific to the Anaconda Navigator and potentially other GUI tools provided by Anaconda.
+- **`/opt/anaconda3`** is the prinicipal directory where annaconda installs its software
+
 
 These directories are part of the standard setup for Anaconda and Conda and help manage the environments, packages, and configurations on a per-user basis. They don’t interfere with your existing Python setup and are generally lightweight in terms of storage.
 
@@ -82,14 +151,22 @@ These directories are part of the standard setup for Anaconda and Conda and help
 - `echo $PATH`
 
 ```
-/opt/anaconda3/bin:/opt/anaconda3/condabin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/go/bin:/Users/robertc/go/bin:/usr/local/go/bin:/Users/robertc/go/bin
+/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/anaconda3/bin:/opt/anaconda3/condabin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/go/bin:/Users/robertc/go/bin:/usr/local/go/bin:/Users/robertc/go/bin
 ```
 
 - `python --version`
 - `which python`
 
 
-Your `$PATH` is set up to prioritize Anaconda, as `/opt/anaconda3/bin` and `/opt/anaconda3/condabin` are listed first. This means that by default, the Python interpreter and packages from Anaconda will be used when you open a new terminal session.
+◉ python --version                                                                                                        /opt/anaconda3 aws ▲   us-east-2 12:39
+Python 3.12.4
+(base) 
+◉ which python                                                                                                            /opt/anaconda3 aws ▲   us-east-2 12:39
+/opt/anaconda3/bin/python
+(base) 
+◉                 
+
+`$PATH` is set up to prioritize Anaconda, as `/opt/anaconda3/bin` and `/opt/anaconda3/condabin` are listed first. This means that by default, the Python interpreter and packages from Anaconda will be used when you open a new terminal session.
 
 ### Ensuring You Can Still Create Python Virtual Environments Independently of Anaconda
 
@@ -129,26 +206,45 @@ This setup allows you to seamlessly switch between using Anaconda for data scien
 
 ## Managing anaconda environments
 
+### "(base)" vs manual environment creation
 
-Great! This output confirms that `conda` is correctly installed and available on your system. You're now in the `(base)` Conda environment, which is the default environment that activates when you start a new terminal session.
 
-### What You Can Do Next:
+Yes, the `(base)` in your terminal prompt indicates that the default Anaconda environment, called `base`, is activated automatically when you open your terminal. This behavior is typical when Anaconda is installed, as it sets up your shell environment to activate the `base` environment by default.
 
-1. **Create a New Conda Environment (Optional):**
-   - You can create a new Conda environment for specific projects or tasks:
-     ```bash
-     conda create --name myenv
-     ```
-   - Activate the new environment:
-     ```bash
-     conda activate myenv
-     ```
-   - To deactivate the environment and return to the base environment:
-     ```bash
-     conda deactivate
-     ```
+### Removing the `(base)` from Your Prompt
 
-2. **Manage Your Environments:**
+If you don't want the `base` environment to be activated automatically when you open your terminal, you can disable this behavior. To do so:
+
+1. **Disable Auto Activation of the Base Environment:**
+   You can configure Anaconda not to auto-activate the `base` environment by running the following command:
+   ```bash
+   conda config --set auto_activate_base false
+   ```
+   After running this command, the `(base)` will no longer appear in your terminal prompt when you start a new terminal session.
+
+2. **Restart Your Terminal:**
+   Close and reopen your terminal or simply source your shell configuration file (`~/.zshrc` or `~/.bashrc`, depending on your shell) to apply the changes.
+
+### Implications of Disabling Auto-Activation
+
+- **Manual Activation:** After disabling auto-activation, you will need to manually activate the `base` environment or any other conda environment you want to use by running:
+  ```bash
+  conda activate base
+  ```
+  Or, for another environment:
+  ```bash
+  conda activate <environment_name>
+  ```
+
+- **More Control:** Disabling auto-activation gives you more control over which Python environment is active, which can be especially useful if you use multiple Python versions or environments on your system.
+
+- **Avoid Conflicts:** If you have other Python environments or versions installed (e.g., via Homebrew or system Python), not auto-activating the `base` environment can help avoid potential conflicts between Anaconda and other Python installations.
+
+In your case, since you've already expressed a preference for controlling Anaconda activations manually, this approach aligns well with your workflow and avoids any unintended interference from the `base` environment.
+
+
+
+**Manage Your Environments:**
    - List all available environments:
      ```bash
      conda info --envs
@@ -158,14 +254,14 @@ Great! This output confirms that `conda` is correctly installed and available on
      conda remove --name myenv --all
      ```
 
-3. **Keep Using Your Existing Python Setup:**
+**Keep Using Your Existing Python Setup:**
    - For projects that don’t require Anaconda, you can deactivate the Conda environment:
      ```bash
      conda deactivate
      ```
    - You can then use your Homebrew-installed Python and virtual environments as you usually do.
 
-4. **Launch the Anaconda Navigator (Optional):**
+**Launch the Anaconda Navigator (Optional):**
    - If you prefer a graphical interface, you can launch the Anaconda Navigator:
      ```bash
      anaconda-navigator
@@ -173,10 +269,12 @@ Great! This output confirms that `conda` is correctly installed and available on
 
 You’re all set to work with Anaconda for your data science projects while maintaining your existing Python workflow for other tasks. If you have any more questions or need further assistance, feel free to ask!
 
-## Example Project: Conda environment
 
 
-Yes, you're absolutely correct! It’s a good practice to navigate to your project directory before creating a new Conda environment, especially if you plan to keep your project files and environment-related files together or want to be in the right context when activating the environment.
+## Example Project: Conda environment without Jupyter Notebookd
+
+
+It’s a good practice to navigate to your project directory before creating a new Conda environment, especially if you plan to keep your project files and environment-related files together or want to be in the right context when activating the environment.
 
 ### Recap of the Procedure to Create a New Conda Environment and Develop Python Code
 
@@ -241,47 +339,79 @@ zsh: command not found: python
 
 By following this procedure, you'll ensure that your Conda environment is specific to your project and that all dependencies are managed within that environment. This practice helps maintain clean, isolated environments for different projects.
 
-## Conda Virtual Environments
+## Example Project: Jupyter Notebooks
 
-Yes, that's correct! When you create a Conda environment, it can include its own installation of Python, which is isolated from other environments and the system-wide Python installation. This is one of the key features of Conda, allowing you to have multiple environments with different versions of Python and different sets of packages, all without interfering with each other.
+To set up a smooth workflow for working with Jupyter Notebooks and Conda on your machine, especially given that you've disabled the auto-activation of the `base` environment, you can follow these steps:
 
-### How Conda Environments Work with Python:
-1. **Isolated Python Installation:**
-   - Each Conda environment can have its own version of Python installed. When you specify a Python version during the creation of a Conda environment, Conda installs that specific version of Python into the environment.
+### 1. **Create a Conda Environment for Your Course**
+   It’s a good practice to create a separate Conda environment for your university course. This helps keep your dependencies organized and avoids conflicts.
 
-2. **Environment-Specific Packages:**
-   - The packages installed in a Conda environment are also isolated to that environment. This means that you can have different versions of the same package in different environments without any conflicts.
-
-3. **Environment Activation:**
-   - When you activate a Conda environment, the `python` command (and any other installed packages) will refer to the versions installed within that environment. This ensures that your scripts run with the correct interpreter and dependencies.
-
-4. **No Interference with System Python:**
-   - The Python installation in a Conda environment does not affect your system-wide Python or other environments. This is particularly useful for working on projects that require different Python versions or dependencies.
-
-### Example Workflow:
-1. **Create a Conda Environment with a Specific Python Version:**
    ```bash
-   conda create --name myenv python=3.12
+   conda create --name university_course python=3.12.4
    ```
 
-2. **Activate the Environment:**
+   Replace `university_course` with a meaningful name for the environment.
+
+### 2. **Activate the Conda Environment**
+   Once the environment is created, activate it:
+
    ```bash
-   conda activate myenv
+   conda activate university_course
    ```
 
-3. **Install Packages and Develop:**
+   This ensures that all packages and dependencies installed are within this environment.
+
+### 3. **Install Jupyter Notebook in the Environment**
+   With the environment activated, install Jupyter Notebook:
+
    ```bash
-   conda install numpy
-   python hello_conda.py
+   conda install jupyter
    ```
 
-4. **Deactivate the Environment:**
+   This installs Jupyter Notebook in your `university_course` environment.
+
+### 4. **Add the Conda Environment to Jupyter**
+   Next, you need to add this environment as a kernel in Jupyter so that you can select it when working in notebooks:
+
+   ```bash
+   python -m ipykernel install --user --name university_course --display-name "Python (university_course)"
+   ```
+
+   This command adds the environment to Jupyter’s list of available kernels, so you can select it when opening or creating a notebook.
+
+### 5. **Launch Jupyter Notebook**
+   You can now launch Jupyter Notebook from within the activated environment:
+
+   ```bash
+   jupyter notebook
+   ```
+
+   This will open the Jupyter Notebook interface in your web browser.
+
+### 6. **Open the Downloaded Notebook**
+   In the Jupyter interface, navigate to the directory where you downloaded the notebook file from your class portal and open it.
+
+### 7. **Select the Conda Environment Kernel**
+   Once the notebook is open, make sure it’s using the correct Conda environment. You can do this by going to `Kernel` > `Change kernel` and selecting "Python (university_course)" from the list.
+
+### 8. **Work on Your Notebook**
+   You can now work on your notebook with the environment fully set up. All the packages you need for your course should be installed within the `university_course` environment.
+
+### 9. **Deactivating the Environment**
+   When you’re done, you can deactivate the environment:
+
    ```bash
    conda deactivate
    ```
 
-This setup allows you to work on multiple projects with different requirements on the same machine without running into version conflicts.
+### Summary Workflow
 
+1. **Download the notebook file from your course portal.**
+2. **Activate your course-specific Conda environment.**
+3. **Launch Jupyter Notebook from within the activated environment.**
+4. **Open the notebook and ensure the correct kernel is selected.**
+
+This approach keeps your work organized and ensures that the dependencies required by your course are isolated in a specific environment, reducing the risk of conflicts.
 
 ## links
 
