@@ -1,8 +1,8 @@
-Certainly! Below is a README format that outlines the steps for your protégé to establish multi-factor authentication (MFA) for her AWS console login and install the AWS CLI.
+# AWS account management
 
----
+**pre-step:** write down the account number in a place where you will not forget it!
 
-# Setting Up AWS Multi-Factor Authentication (MFA) and AWS CLI
+##  Setting Up AWS Multi-Factor Authentication (MFA) and AWS CLI
 
 ## 1. Enable Multi-Factor Authentication (MFA) for AWS Console Login
 
